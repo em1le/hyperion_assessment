@@ -55,6 +55,9 @@ def draw_square(square_edge):
             current_list = update_current_list
             list_index = update_list_index
 
+    # line checker
+    print(sum(square[0]))
+
 def magic_square():
     """  """
     square_edge = user_input()
