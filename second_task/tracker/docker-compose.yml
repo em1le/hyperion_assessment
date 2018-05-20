@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=emile_test_db
+    ports:
+      - '127.0.0.1:5432:5432'
+  # rabbit:
+  #   hostname: rabbit
+  #   image: rabbitmq:latest
+  #   environment:
+  #     - RABBITMQ_DEFAULT_USER=admin
+  #     - RABBITMQ_DEFAULT_PASS=admin
+  #   ports:
+  #     - "5673:5672"
+  # worker:
+  #   build:
+  #     context: .
+  #     dockerfile: dockerfile
+  #   volumes:
+  #     - .:/app
+  #   links:
+  #     - rabbit
+  #   depends_on:
+  #     - rabbit
