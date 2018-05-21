@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container is-widescreen">
+  <section class="hero hero is-fullheight is-primary is-bold">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Welcome to dropbox tracker app
+        </h1>
+        <h2 class="subtitle">
+          It is a simple app that displays how many times a dropbox user modified its files
+        </h2>
+        <div>
+        	<p>
+        		First you need to follow the readme.md to make it work.
+        	</p> 
+        </div>
+        <div>
+        	<p>If you are ready:</p>
+        	<a class="button is-primary is-inverted is-outlined" href="{% url 'chart' %}">Click here</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock content %}
