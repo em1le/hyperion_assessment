@@ -8,10 +8,38 @@ You need to have a valid dropbox token to go to the next step
 
 ### Prerequisites
 
-Python 3.6
-Virtualenvwrapper
-Docker
-Docker-compose
+1. Python 3.6
+2. Virtualenvwrapper
+
+Docker is optional.
+If you do not want to use docker replace ```DATABASES``` in tracker/settings.py
+
+Replace the following code:
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST')
+    }
+}
+```
+
+with this:
+
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
+```
+
+3. Docker
+4. Docker-compose
 
 The following command must be type in your bash.
 
