@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here.
+from .models import FileData
+from connect.dropbox import make_connection
+
 def index(request):
-    return HttpResponse("HELLO")
+    return HttpResponse("Index")
