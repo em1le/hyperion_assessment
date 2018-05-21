@@ -1,0 +1,10 @@
+All problem have theirs solutions.
+
+Firstly, I would say that a good web API rely on how its problematic is apprehended. I believe that being proactive is a quality because it gives a better way to abstract the problem to solve.
+
+I think a good web API must take care of the change management process. Recently I worked using the Instagram web API and many changes will occur until the end of 2018. It is a bad thing to introduce break changes to existing endpoints. Because, it breaks everything that developer made on their side. What exists should be kept as long as it is stable.
+
+Also another things that could be part of the process is KISS. I would expose only what is needed and in the same process I would try to be semantically  correct. I know it is hard to find the right semantic sometimes but I would not create something that return confusing status code.
+
+To be more specific I would try my best to create a Restful API following its 5 constraints. I would design to be secured and salable. I would create some layers of security such as regenerating authentication credentials, second access token, automated security testing.
+On the scalability, I would use a load balancer (such as AWS load balancing or kunernetes) to make it reactive. And as a good practice I would use vertical scale to create more server when the demand is high. To get good performance I would use RabbitMQ for queuing.
