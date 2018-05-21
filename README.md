@@ -180,3 +180,8 @@ The settings of django crontab are available in django setting file
 * [Chartit](https://github.com/chartit/django-chartit) - module to create charts
 * [Django cron](https://github.com/kraiz/django-crontab) - module to create django cron
 
+## Things missing:
+
+* lookup for dropbox root subfolders
+* update files from the root subfolders
+* better errors management
