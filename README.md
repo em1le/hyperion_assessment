@@ -10,8 +10,10 @@ You need to have a valid dropbox token to go to the next step
 
 1. Python 3.6
 2. Virtualenvwrapper
+3. Docker
+4. Docker-compose
 
-Docker is optional.
+*Docker is optional.*
 If you do not want to use docker replace ```DATABASES``` in tracker/settings.py
 
 Replace the following code:
@@ -33,15 +35,13 @@ with this:
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
+        'NAME': config('DB_NAME'),
     }
 }
 ```
 
-3. Docker
-4. Docker-compose
-
-The following command must be type in your bash.
+#### Check the Prerequisites
+The following commands must be type in your bash.
 
 Check if Python 3.6 is installed:
 ```
@@ -60,52 +60,95 @@ If not:
 sudo apt install virtualenvwrapper
 ```
 
+__optional__
+
 If docker and docker-compose are already installed on your local machine you can pass.
 If not follow this [link](https://www.digitalocean.com/community/tutorials/how-to-install-docker-compose-on-ubuntu-16-04)
-
 
 ### Installing
 
 #### Clone the project
+
+Firstly, we must copy the project
+
 ```
 git clone git@github.com:em1le/hyperion_assessment.git
 ```
-then
+
+Secondly we must go into the directory of the app
 
 ```
 cd second_task/
 ```
 
 #### Set up virtualenvwrapper
+Virtualenvwrapper is installed on you computer.
+Now we are going to create a virtualenv for the app.
 
+To do so, type the following command:
 ```
-mkvirtualenvwrapper second_task
+mkvirtualenvwrapper tracker
 ```
 
-then
-
+then we need to install depencies in order to have a working application:
 ```
 pip install -r requirements.txt
 ```
 
-#### Launch docker-compose
+Now that you have set up your env and installed the requirements, go to the next step
+
+#### Fire up docker-compose
+This step is __optional__ as you might not want to use docker.
+
+If you want to use docker, be sure to be in the right directory:
+```
+pwd
+```
+The result is as follow:
+```
+/home/user/path_to/assessment/second_task
+```
+
+Then type the command to create a docker that will contains a postgres db:
 ```
 sudo docker-compose -f docker-compose.yml up
 ```
 
 #### Set up you dropbox token
-Go to the tracker folder and open .env file
-and change the line DROPBOX_TOKEN with yours
+
+Be ready, you are almost done with settings.
+
+We need to know where we are so:
+``` 
+pwd
+```
+
+The result is as follow:
+```
+/home/user/path_to/assessment/second_task
+```
+
+Type:
+``` 
+cd tracker/
+```
+
+We are now in our django application
+
+Open the .env file and change the line DROPBOX_TOKEN with yours
 ```
 DROPBOX_TOKEN=your_dropbox_token
 ```
 
 #### Run the migration command
+Migrate the models to the database:
+
 ```
 ./manage.py migrate
 ```
 
 #### Test if your app is ok
+To be sure we can launch our app without doubts:
 ```
 ./manage.py check
 ```
@@ -122,7 +165,7 @@ You can check how many times a user modified its files in 3 ways:
 
 2 - In creating a django crontab:
 ```
-./manage.py manage.py crontab add
+./manage.py crontab add
 ```
 The settings of django crontab are available in django setting file
 
